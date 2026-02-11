@@ -38,9 +38,9 @@ canvas {
 /* Seni seviyorum yazısı */
 #loveText {
   position: fixed;
-  top: 45%; /* ⬅️ DAHA ÜSTTE */
+  top: 35%;   /* ⬅️ BURASI */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);  /* ⬅️ -50% -50% değil */
   font-size: 2.4rem;
   font-weight: 500;
   color: white;
