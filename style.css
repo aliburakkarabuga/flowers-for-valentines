@@ -15,7 +15,7 @@ canvas {
   touch-action: none;
 }
 
-/* İlk yazı */
+
 #hint {
   position: fixed;
   top: 12%;
@@ -35,7 +35,7 @@ canvas {
   opacity: 0;
 }
 
-/* Seni seviyorum yazısı */
+
 #loveText {
   position: fixed;
   top: 35%;   /* ⬅️ BURASI */
