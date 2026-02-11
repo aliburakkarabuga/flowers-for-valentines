@@ -18,7 +18,7 @@ let stars = []
 let time = 0
 let totalClicks = 0
 
-/* 🌇 Akşam üstü arka plan */
+
 function drawBackground() {
   const g = ctx.createLinearGradient(0, 0, 0, canvas.height)
   g.addColorStop(0, "#3a0f2a")
@@ -28,7 +28,7 @@ function drawBackground() {
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 }
 
-/* 🌙 Yıldızlar */
+
 function createStars() {
   stars = []
   for (let i = 0; i < 40; i++) {
@@ -53,7 +53,7 @@ function drawStars() {
   ctx.globalAlpha = 1
 }
 
-/* 🌱 Çimen */
+
 const GRASS_COLORS = ["#2f8f46", "#3fa34d", "#4caf50", "#5cbf70"]
 
 class Grass {
@@ -81,7 +81,7 @@ class Grass {
   }
 }
 
-/* 🌸 Çiçek */
+
 const COLORS = [
   "#ff5fa2", "#ff6b6b", "#f72585",
   "#c77dff", "#9d4edd", "#ff8fab",
@@ -146,7 +146,7 @@ class Flower {
   }
 }
 
-/* 👉 Dokunma */
+
 document.addEventListener("pointerdown", e => {
   totalClicks++
 
@@ -156,7 +156,6 @@ document.addEventListener("pointerdown", e => {
     return
   }
 
-  // 3. tık → seni seviyorum görünür
   if (totalClicks === 3) {
     loveText.classList.add("show")
   }
@@ -171,7 +170,7 @@ document.addEventListener("pointerdown", e => {
   }
 })
 
-/* 🔁 Loop */
+
 function loop() {
   drawBackground()
   drawStars()
