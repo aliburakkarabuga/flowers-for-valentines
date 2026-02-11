@@ -3,7 +3,6 @@ const ctx = canvas.getContext("2d")
 const hint = document.getElementById("hint")
 const loveText = document.getElementById("loveText")
 const pop = document.getElementById("pop")
-let afterHintClicks = 0
 
 function resize() {
   canvas.width = window.innerWidth
@@ -19,9 +18,7 @@ let hearts = []
 let stars = []
 let time = 0
 let firstTouch = true
-
-let clickCount = 0
-let hintGone = false
+let totalClicks = 0
 
 /* 🌇 ARKA PLAN */
 function drawBackground() {
@@ -151,40 +148,30 @@ class Flower {
   }
 }
 
-/* 👉 DOKUNMA */
+/* 👉 DOKUNMA – NET VE TEMİZ */
 document.addEventListener("pointerdown", e => {
+  totalClicks++
 
-  // 1️⃣ ilk tık: sadece yazıyı kaldır
-  if (!hint.classList.contains("hidden")) {
+  // 1️⃣ ilk tık → hint gider
+  if (totalClicks === 1) {
     hint.classList.add("hidden")
-    return
   }
 
-  // 2️⃣ ilk yazıdan sonraki tıklar
-  afterHintClicks++
-
-  // 3️⃣ 2 tık sonra yazıyı göster
-  if (afterHintClicks === 2) {
+  // 3️⃣ tık → yazı KESİN çıkar
+  if (totalClicks === 3) {
     loveText.classList.add("show")
   }
 
   const x = e.clientX
 
-  // 🌱 çimen
-  for (let i = 0; i < 24; i++) {
-    grasses.push(new Grass(x))
-  }
+  for (let i = 0; i < 24; i++) grasses.push(new Grass(x))
 
-  // 🌸 4–5 çiçek
   const count = 4 + Math.floor(Math.random() * 2)
   for (let i = 0; i < count; i++) {
-    flowers.push(
-      new Flower(x + (Math.random() - 0.5) * 120)
-    )
+    flowers.push(new Flower(x + (Math.random() - 0.5) * 120))
   }
-
-  hearts.push(new Heart(x, canvas.height - 240))
 })
+
 /* 🔁 LOOP */
 function loop() {
   drawBackground()
