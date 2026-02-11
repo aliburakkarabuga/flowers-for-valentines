@@ -14,13 +14,11 @@ resize()
 
 let flowers = []
 let grasses = []
-let hearts = []
 let stars = []
 let time = 0
-let firstTouch = true
 let totalClicks = 0
 
-/* 🌇 ARKA PLAN */
+/* 🌇 Akşam üstü arka plan */
 function drawBackground() {
   const g = ctx.createLinearGradient(0, 0, 0, canvas.height)
   g.addColorStop(0, "#3a0f2a")
@@ -30,7 +28,7 @@ function drawBackground() {
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 }
 
-/* 🌙 YILDIZ */
+/* 🌙 Yıldızlar */
 function createStars() {
   stars = []
   for (let i = 0; i < 40; i++) {
@@ -55,7 +53,7 @@ function drawStars() {
   ctx.globalAlpha = 1
 }
 
-/* 🌱 ÇİMEN */
+/* 🌱 Çimen */
 const GRASS_COLORS = ["#2f8f46", "#3fa34d", "#4caf50", "#5cbf70"]
 
 class Grass {
@@ -83,7 +81,7 @@ class Grass {
   }
 }
 
-/* 🌸 ÇİÇEK */
+/* 🌸 Çiçek */
 const COLORS = [
   "#ff5fa2", "#ff6b6b", "#f72585",
   "#c77dff", "#9d4edd", "#ff8fab",
@@ -148,16 +146,17 @@ class Flower {
   }
 }
 
-/* 👉 DOKUNMA – NET VE TEMİZ */
+/* 👉 Dokunma */
 document.addEventListener("pointerdown", e => {
   totalClicks++
 
-  // 1️⃣ ilk tık → hint gider
+  // 1. tık → giriş yazısı gider
   if (totalClicks === 1) {
     hint.classList.add("hidden")
+    return
   }
 
-  // 3️⃣ tık → yazı KESİN çıkar
+  // 3. tık → seni seviyorum görünür
   if (totalClicks === 3) {
     loveText.classList.add("show")
   }
@@ -172,7 +171,7 @@ document.addEventListener("pointerdown", e => {
   }
 })
 
-/* 🔁 LOOP */
+/* 🔁 Loop */
 function loop() {
   drawBackground()
   drawStars()
@@ -184,15 +183,3 @@ function loop() {
   requestAnimationFrame(loop)
 }
 loop()
-setTimeout(() => {
-  const el = document.getElementById("loveText")
-  el.style.position = "fixed"
-  el.style.top = "50%"
-  el.style.left = "50%"
-  el.style.transform = "translate(-50%, -50%)"
-  el.style.fontSize = "3rem"
-  el.style.color = "white"
-  el.style.zIndex = "99999"
-  el.style.opacity = "1"
-  el.innerText = "seni seviyorum."
-}, 2000)
