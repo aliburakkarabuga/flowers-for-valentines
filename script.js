@@ -184,3 +184,15 @@ function loop() {
   requestAnimationFrame(loop)
 }
 loop()
+setTimeout(() => {
+  const el = document.getElementById("loveText")
+  el.style.position = "fixed"
+  el.style.top = "50%"
+  el.style.left = "50%"
+  el.style.transform = "translate(-50%, -50%)"
+  el.style.fontSize = "3rem"
+  el.style.color = "white"
+  el.style.zIndex = "99999"
+  el.style.opacity = "1"
+  el.innerText = "seni seviyorum."
+}, 2000)
